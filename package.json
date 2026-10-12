@@ -1,0 +1,45 @@
+{
+    "name": "shoe-shop-bot",
+    "version": "1.0.0",
+    "description": "Telegram e-commerce bot for Ethiopian shops",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/bot/index.js",
+        "dev": "nodemon --watch src --ext js,json src/bot/index.js",
+        "dev:api": "nodemon --watch src --ext js,json src/web/index.js",
+        "dev:dashboard": "concurrently -k -n API,WEB -c cyan,magenta \"npm run dev:api\" \"npm --prefix dashboard run dev -- --host\"",
+        "build:dashboard": "cd dashboard && npm run build",
+        "db:init": "node tools/init-db.js",
+        "db:seed": "node tools/seed-db.js",
+        "db:test": "node tools/test-db.js",
+        "db:backup": "node tools/backup-db.js",
+        "db:reset": "node tools/reset-db.js",
+        "import": "node tools/import.js",
+        "scraper": "node tools/scraper.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "telegram",
+        "bot",
+        "e-commerce",
+        "shop",
+        "ethiopia"
+    ],
+    "author": "Filmon Abrha",
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "@tailwindcss/vite": "^4.2.1",
+        "concurrently": "^9.2.1",
+        "nodemon": "^3.1.14"
+    },
+    "dependencies": {
+        "better-sqlite3": "^12.6.2",
+        "cors": "^2.8.6",
+        "crypto": "^1.0.1",
+        "dotenv": "^17.3.1",
+        "express": "^5.2.1",
+        "multer": "^2.1.1",
+        "telegraf": "^4.16.3"
+    }
+}
